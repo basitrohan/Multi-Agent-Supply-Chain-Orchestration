@@ -1,4 +1,4 @@
-# SupplyChain Sentinel
+# Multi-Agent Supply Chain Orchestration
 
 ![CI](https://img.shields.io/badge/CI-passing-brightgreen)
 ![Tests](https://img.shields.io/badge/tests-44%20passing-brightgreen)
