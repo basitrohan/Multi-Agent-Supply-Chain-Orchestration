@@ -1,0 +1,97 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap");
+
+:root {
+  /* ---- Color tokens ---- */
+  --ink: #1a2332;          /* deep navy - primary surfaces, headers */
+  --ink-soft: #2c3445;      /* lighter navy - secondary surfaces */
+  --paper: #faf8f4;         /* warm off-white - page background */
+  --paper-raised: #ffffff;   /* card backgrounds */
+  --charcoal: #22262e;       /* body text */
+  --slate: #6b7280;          /* muted/secondary text */
+  --line: #e4e0d6;           /* hairline borders on paper */
+  --line-dark: #3a4254;      /* hairline borders on navy */
+
+  --signal-amber: #e8833a;   /* risk / action accent */
+  --signal-amber-soft: #fbeade;
+  --signal-teal: #3d8c8c;    /* calm / agent-active / safe */
+  --signal-teal-soft: #e2efee;
+  --signal-rust: #c24d3f;    /* critical only */
+  --signal-rust-soft: #f8e6e2;
+
+  /* ---- Type tokens ---- */
+  --font-display: "Space Grotesk", "Arial Narrow", sans-serif;
+  --font-body: "Inter", -apple-system, sans-serif;
+  --font-mono: "JetBrains Mono", "SF Mono", monospace;
+
+  /* ---- Layout tokens ---- */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --shadow-card: 0 1px 2px rgba(26, 35, 50, 0.06), 0 4px 16px rgba(26, 35, 50, 0.04);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--paper);
+  color: var(--charcoal);
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  margin: 0;
+  color: var(--ink);
+  letter-spacing: -0.01em;
+}
+
+button {
+  font-family: var(--font-body);
+}
+
+code, .mono {
+  font-family: var(--font-mono);
+}
+
+/* Visible keyboard focus -- accessibility floor */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--signal-teal);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--line);
+  border-radius: 8px;
+}

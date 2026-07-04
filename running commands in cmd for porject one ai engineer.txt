@@ -1,0 +1,32 @@
+venv\Scripts\activate
+python scripts\csv_to_json.py suppliers data\csv_templates\suppliers_template.csv
+python scripts\csv_to_json.py inventory data\csv_templates\inventory_template.csv
+python scripts\run_demo.py
+
+
+this for the 2 zip file that is the new one
+
+
+for new folder
+# Terminal 1 — backend
+source venv/bin/activate
+uvicorn app.main:app --reload
+
+# Terminal 2 — web console
+cd frontend
+npm install
+npm run dev
+
+
+
+input[type="text"],
+input[type="number"],
+select {
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  padding: 9px 10px;
+  font-size: 14px;
+  font-family: var(--font-body);
+  background: var(--paper);
+  color: var(--charcoal);
+}

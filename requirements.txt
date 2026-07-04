@@ -1,0 +1,32 @@
+# Production dependencies only -- this is what actually ships and runs the
+# service. Testing and code-quality tools live in requirements-dev.txt so a
+# production Docker image never installs pytest/black/ruff at all.
+
+# ===== Core Web Framework =====
+fastapi>=0.115.0,<0.116.0
+uvicorn[standard]>=0.32.0,<0.33.0
+pydantic>=2.9.0,<3.0.0
+pydantic-settings>=2.5.0,<3.0.0
+python-multipart>=0.0.12,<0.1.0
+
+# ===== Agentic / LLM Orchestration =====
+# Pinned to a known-compatible trio (LangChain ecosystem moves fast;
+# these three are tested together as of this project's build date).
+langgraph==0.2.39
+langchain==0.3.4
+langchain-core>=0.3.12,<0.4.0
+langchain-aws>=0.2.1,<0.3.0
+langchain-community>=0.3.1,<0.4.0
+
+# ===== AWS =====
+boto3>=1.35.0,<1.36.0
+botocore>=1.35.0,<1.36.0
+
+# ===== Data & Simulation =====
+numpy>=1.26.0,<2.0.0
+pandas>=2.2.0,<2.3.0
+
+# ===== Utilities =====
+python-dotenv>=1.0.1,<2.0.0
+loguru>=0.7.2,<0.8.0
+tenacity>=8.5.0,<9.0.0

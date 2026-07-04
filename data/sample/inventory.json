@@ -1,0 +1,74 @@
+[
+  {
+    "sku": "SKU-1001",
+    "description": "Lithium-Ion Battery Cell (18650)",
+    "current_stock_units": 42000,
+    "reorder_point_units": 15000,
+    "avg_monthly_demand_units": 28000,
+    "unit_cost_usd": 3.10,
+    "primary_supplier_id": "SUP-002"
+  },
+  {
+    "sku": "SKU-1002",
+    "description": "Precision CNC Aluminum Housing",
+    "current_stock_units": 8000,
+    "reorder_point_units": 6000,
+    "avg_monthly_demand_units": 9500,
+    "unit_cost_usd": 14.75,
+    "primary_supplier_id": "SUP-001"
+  },
+  {
+    "sku": "SKU-1003",
+    "description": "Cold-Rolled Steel Sheet (1.2mm)",
+    "current_stock_units": 21000,
+    "reorder_point_units": 8000,
+    "avg_monthly_demand_units": 12000,
+    "unit_cost_usd": 5.40,
+    "primary_supplier_id": "SUP-003"
+  },
+  {
+    "sku": "SKU-1004",
+    "description": "PCB Assembly - Control Module v3",
+    "current_stock_units": 5200,
+    "reorder_point_units": 4000,
+    "avg_monthly_demand_units": 7000,
+    "unit_cost_usd": 22.00,
+    "primary_supplier_id": "SUP-004"
+  },
+  {
+    "sku": "SKU-1005",
+    "description": "Protective Packaging Foam Inserts",
+    "current_stock_units": 60000,
+    "reorder_point_units": 20000,
+    "avg_monthly_demand_units": 35000,
+    "unit_cost_usd": 0.85,
+    "primary_supplier_id": "SUP-005"
+  },
+  {
+    "sku": "SKU-1006",
+    "description": "Industrial Wiring Harness Kit",
+    "current_stock_units": 9800,
+    "reorder_point_units": 5000,
+    "avg_monthly_demand_units": 6200,
+    "unit_cost_usd": 9.30,
+    "primary_supplier_id": "SUP-006"
+  },
+  {
+    "sku": "SKU-1007",
+    "description": "Surface-Mount Capacitor Pack (1000ct)",
+    "current_stock_units": 31000,
+    "reorder_point_units": 10000,
+    "avg_monthly_demand_units": 18000,
+    "unit_cost_usd": 1.95,
+    "primary_supplier_id": "SUP-002"
+  },
+  {
+    "sku": "SKU-1008",
+    "description": "Anti-Static Shipping Container",
+    "current_stock_units": 4500,
+    "reorder_point_units": 3500,
+    "avg_monthly_demand_units": 5000,
+    "unit_cost_usd": 11.20,
+    "primary_supplier_id": "SUP-005"
+  }
+]

@@ -1,0 +1,2 @@
+supplier_id,name,region,reliability_score,avg_lead_time_days,monthly_capacity_units
+SUP-001,Example Supplier Co.,APAC,0.90,15,40000

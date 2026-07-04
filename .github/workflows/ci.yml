@@ -1,0 +1,100 @@
+name: CI
+
+# WHY THIS FILE EXISTS
+# ---------------------
+# This is a Continuous Integration pipeline: every time code is pushed or a
+# pull request is opened, GitHub automatically spins up a clean machine,
+# installs this project, lints it, and runs the full test suite. If anything
+# fails, the PR is blocked from being merged until it's fixed.
+#
+# This is what separates "a script that works on my machine" from "a project
+# with quality gates" -- worth pointing at directly in an interview as
+# evidence of professional engineering practice, not just working code.
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+
+jobs:
+  lint-and-test:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        python-version: ["3.12"]
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: "pip"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt -r requirements-dev.txt
+
+      - name: Lint with ruff
+        run: ruff check app/ tests/ scripts/
+
+      - name: Check formatting with black
+        run: black --check app/ tests/ scripts/
+
+      - name: Run test suite with coverage
+        run: pytest -v --cov=app --cov-report=term-missing
+        env:
+          # CI runs with no AWS credentials on purpose -- this proves the
+          # mock-LLM fallback path works correctly in a clean environment,
+          # which is exactly the scenario a new contributor will hit too.
+          USE_MOCK_LLM: "true"
+
+  docker-build:
+    runs-on: ubuntu-latest
+    needs: lint-and-test
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Build Docker image
+        run: docker build -t supply-chain-sentinel:ci .
+
+      - name: Smoke-test the container
+        run: |
+          docker run -d --name sentinel-ci -p 8000:8000 supply-chain-sentinel:ci
+          sleep 8
+          curl --fail http://localhost:8000/api/v1/health
+          docker logs sentinel-ci
+          docker stop sentinel-ci
+
+  frontend-build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+          cache-dependency-path: frontend/package-lock.json
+
+      - name: Install frontend dependencies
+        working-directory: frontend
+        run: npm ci
+
+      - name: Lint frontend
+        working-directory: frontend
+        run: npm run lint
+
+      - name: Build frontend
+        working-directory: frontend
+        run: npm run build

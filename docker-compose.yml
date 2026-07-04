@@ -1,0 +1,45 @@
+# =============================================================================
+# docker-compose.yml
+# =============================================================================
+# Run the whole service with a single command:
+#
+#     docker compose up --build
+#
+# Then visit http://localhost:8000/docs
+#
+# WHY DOCKER COMPOSE (even for a single service)?
+#   - It documents HOW to run the container (ports, env vars, volumes) in one
+#     readable file instead of a long `docker run ...` command you have to
+#     remember or re-type.
+#   - It makes it trivial to add more services later (e.g. a Postgres
+#     database, a Redis cache, a separate worker process) -- each just
+#     becomes another block below, and they can all talk to each other by
+#     service name automatically.
+# =============================================================================
+
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: supply-chain-sentinel:latest
+    container_name: supply-chain-sentinel-api
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+    environment:
+      # Override anything from .env here if needed for the containerized run.
+      - API_HOST=0.0.0.0
+      - API_PORT=8000
+    volumes:
+      # Persist generated reports + logs on the host machine, so they survive
+      # `docker compose down` and are easy to open outside the container.
+      - ./data/reports:/app/data/reports
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/api/v1/health')"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s

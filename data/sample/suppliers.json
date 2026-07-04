@@ -1,0 +1,50 @@
+[
+  {
+    "supplier_id": "SUP-001",
+    "name": "Pacific Rim Components Ltd.",
+    "region": "APAC",
+    "reliability_score": 0.91,
+    "avg_lead_time_days": 18,
+    "monthly_capacity_units": 50000
+  },
+  {
+    "supplier_id": "SUP-002",
+    "name": "Shenzhen Precision Manufacturing",
+    "region": "APAC",
+    "reliability_score": 0.78,
+    "avg_lead_time_days": 25,
+    "monthly_capacity_units": 80000
+  },
+  {
+    "supplier_id": "SUP-003",
+    "name": "Atlantic Steel & Alloys Inc.",
+    "region": "North America",
+    "reliability_score": 0.95,
+    "avg_lead_time_days": 9,
+    "monthly_capacity_units": 30000
+  },
+  {
+    "supplier_id": "SUP-004",
+    "name": "Rhine Valley Electronics GmbH",
+    "region": "EU",
+    "reliability_score": 0.88,
+    "avg_lead_time_days": 14,
+    "monthly_capacity_units": 40000
+  },
+  {
+    "supplier_id": "SUP-005",
+    "name": "Mumbai Textile & Packaging Co.",
+    "region": "APAC",
+    "reliability_score": 0.71,
+    "avg_lead_time_days": 30,
+    "monthly_capacity_units": 60000
+  },
+  {
+    "supplier_id": "SUP-006",
+    "name": "Gulf Coast Logistics Partners",
+    "region": "North America",
+    "reliability_score": 0.84,
+    "avg_lead_time_days": 11,
+    "monthly_capacity_units": 35000
+  }
+]

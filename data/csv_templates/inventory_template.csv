@@ -1,0 +1,2 @@
+sku,description,current_stock_units,reorder_point_units,avg_monthly_demand_units,unit_cost_usd,primary_supplier_id
+SKU-1001,Example Product Name,10000,4000,7000,5.50,SUP-001
